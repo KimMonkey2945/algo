@@ -1,5 +1,7 @@
 package basic.String;
 
+import java.util.*;
+
 public class 특정문자뒤집기 {
 
     /*
@@ -20,19 +22,33 @@ public class 특정문자뒤집기 {
 
     public static void main(String[] args) {
 
+        Scanner in=new Scanner(System.in);
+        String input1 = in.nextLine();
+        solution(input1);
+
     }
 
-    public static String solution(String str){
-        String result = "";
-        String reverse = "";
-        StringBuilder sb = new StringBuilder(str);
+    public static void solution(String str){
+        StringBuilder result = new StringBuilder();
+        List<Character> alpa = new ArrayList<>();
+        int index = 0;
+        for(char a : str.toCharArray()){
+            if(Character.isAlphabetic(a)){
+                alpa.add(a);
+            }
+        }
 
-        reverse = sb.reverse().toString();
+        Collections.reverse(alpa);
 
+        for(char a : str.toCharArray()){
+            if(Character.isAlphabetic(a)){
+                result.append(alpa.get(index));
+                index++;
+            }else{
+                result.append(a);
+            }
 
-
-
-
-        return result;
+        }
+        System.out.println(result.toString());
     }
 }
